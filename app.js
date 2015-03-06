@@ -21,6 +21,8 @@ app.get('/', function(req, res) {
 });
 
 app.get('/search/talks/:ted_params', function(req, res) {
+    console.log("is this getting called?");
+    console.log(req.params.ted_params);
     res.send(tedSearch('talks', req.params.ted_params));
 });
 
