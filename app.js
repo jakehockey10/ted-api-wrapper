@@ -40,7 +40,7 @@ app.get('/search/blog_posts/:ted_params', function(req, res) {
 
 app.get('/talks', function(req, res) {
     talkIdeas.talks.list({}, function(error, response) {
-        res.send(response.talks.length.toString());
+        res.send(response);
     })
 });
 
@@ -52,6 +52,42 @@ app.get('/talks/:id', function (req, res) {
 
 app.get('/talks/:id/download', function (req, res) {
     talkIdeas.talks.subtitledDownloads({id: req.params.id}, function(error, response) {
+        res.send(response);
+    })
+});
+
+app.get('/playlists/', function(req, res) {
+    talkIdeas.playlists.list({}, function(error, response) {
+        res.send(response);
+    })
+});
+
+app.get('/playlists/:id', function(req, res) {
+    talkIdeas.playlists.query({id: req.params.id}, function(error, response) {
+        res.send(response);
+    })
+});
+
+app.get('/playlists/:id/talks', function (req, res) {
+    talkIdeas.playlists.talkList({id: req.params.id}, function(error, response) {
+        res.send(response);
+    })
+});
+
+app.get('/themes/', function(req, res) {
+    talkIdeas.themes.list({}, function(error, response) {
+        res.send(response);
+    })
+});
+
+app.get('/themes/:id', function(req, res) {
+    talkIdeas.themes.query({id: req.params.id}, function(error, response) {
+        res.send(response);
+    })
+});
+
+app.get('/themes/:id/talks', function (req, res) {
+    talkIdeas.themes.talkList({id: req.params.id}, function(error, response) {
         res.send(response);
     })
 });
